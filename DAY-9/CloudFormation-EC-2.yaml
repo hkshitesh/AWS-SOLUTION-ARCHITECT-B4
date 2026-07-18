@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Launch a t3.micro EC2 instance without a key pair
+Resources:
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t3.micro
+      ImageId: ami-0b6d9d3d33ba97d99
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: true
+          DeviceIndex: '0'
+          SubnetId: subnet-0139be71c9f40ff6f
+          GroupSet:
+            - sg-0432ec1c68a05002a
+      Tags:
+        - Key: Name
+          Value: WordPress-Instance
